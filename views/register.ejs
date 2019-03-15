@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script type="text/javascript" src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+  </head>
+  <style type="text/css">
+        body{
+          background: url(/images/1.jpg) no-repeat;
+          background-size:100%; 
+        }
+        #registerhtml{
+          width: 400px;
+          margin:100px; 
+          background: #f0f0f0;
+          height: 450px;
+          border-radius: 10px;
+        }
+        #registerhtml .container .form-group #exampleInputEmail1 ,#registerhtml .container .form-group #exampleInputname1,
+        #registerhtml .container .form-group #exampleInputPassword1,#loginhtml .container  #danger{
+          width: 350px;
+        }
+        #registerhtml #nav{
+          height: 50px;
+          line-height: 50px;
+          background:#77a9d8;
+          border-radius: 10px 10px 0 0;
+          font-size: 30px; 
+          text-align: center;
+          margin-bottom: 35px;
+        }
+        #registerhtml #nav a{
+          color: #fff;
+        }
+        #registerhtml .container button{
+          width: 350px;
+          margin-top: 10px;
+        }
+        a{
+          text-decoration: none;
+          color: #fff;
+        }
+        #danger{
+          display: none;
+          color: #f00;
+          width: 350px;
+        }
+        #alert{
+          width:700px;
+          position: fixed;
+          top: 50px;
+          left: 300px;
+          background: #fff;
+          height: 600px;
+          display: block;
+        }
+        #alert h2{
+          text-align:center;
+        }
+        #alert p{
+          text-indent: 20px;
+          padding:25px;
+        }
+        #alert button{
+          margin: 20px 130px;
+        }
+    </style>
+  <body>                                                                         
+    <div id="registerhtml">
+    <h2 id="nav">
+      <a href="/register">欢迎，请注册</a>
+    </h2>
+    <div class="container">
+        <form action="/register/validate" method="post">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
+          </div>
+          <div class="alert alert-danger" role="alert" id="danger">用户名已存在</div>
+          <div class="form-group">
+            <label for="exampleInputname1">name</label>
+            <input type="text" class="form-control" id="exampleInputname1" placeholder="name" name="username">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+          </div>
+          <button type="submit" class="btn btn-danger">register</button>
+        </form>
+    </div>
+  </div>
+  <div id="alert">
+    <h2>注册必阅</h2>
+    <p>请您务必仔细阅读：
+
+  1．当您在“党政机关会议定点场所管理信息系统”注册成功后，网络管理员将能看到您的名称、信箱等信息。
+
+  2．当您成功登陆后，系统将根据您的IP地址进行流量统计，除了管理员外，只有您自己能看到自己机器的IP地址，其他人无法看到。
+
+  3．系统将对您所提供的资料进行严格的管理，系统将使用相应的技术，防止您的个人资料丢失或遭篡改。
+
+  4．您对于自己的个人资料享有以下权利：A.随时查询及阅览；B.随时补充或更正；C.随时请求删除。
+
+  5．系统根据实际情况，必要时锁定您的登陆帐号，您将无法访问此系统。
+
+  6．除特别注明之服务条款外，其他一切因您的操作而引致的任何意外、疏忽、合约毁坏、隐秘汇漏、诽谤、版权或知识产权侵犯及其所造成的损失，系统概不负责，亦不承担任何法律责任。
+
+  为维护网上公共秩序和社会稳定，请您自觉遵守以下条款： 　
+  1．自觉遵守：爱国、守法、自律、真实、文明的原则。 　
+
+  2．尊重网上道德，遵守《全国人大常委会关于维护互联网安全的决定》及中华人民共和国其他各项有关法律法规。 　
+
+  3．严禁发表危害国家安全、破坏民族团结、破坏国家宗教政策、破坏社会稳定、侮辱、诽谤、教唆、淫秽等内容的作品。 　
+
+  4．承担一切因您的行为而直接或间接导致的民事或刑事法律责任。 　
+
+  5．党政机关会议定点场所管理信息系统有权保留或删除其管辖评论中的任意内容。 </p>　
+
+  <button type="submit" class="btn btn-info">同意</button>
+  <button type="submit" class="btn btn-danger">不同意</button>
+  </div>
+    <script type="text/javascript">
+        danger = document.querySelector("#danger");
+
+        $('button').eq(1).click(()=>{
+          console.log("aaa");
+          $('#alert').css({display:"none"});
+        })
+        $('button').eq(2).click(()=>{
+          console.log("nbn")
+          location.href = "/login";
+        }) 
+        $('#exampleInputEmail1').blur(()=>{
+          console.log("aasa");
+          $.ajax({
+            url:"/register/checkIt",
+            data:{
+              email:$('#exampleInputEmail1').val()
+            },
+            success(result){
+              console.log(result);
+              if(!result.ok){
+                danger.style.display = "block";
+              } else{
+                danger.style.display = "none";
+              }
+            }
+          })
+        })
+    </script>
+  </body>
+</html>

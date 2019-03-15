@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script type="text/javascript" src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <%- include("header.ejs",{title:"notice",who:name})%>
+    <div class="container">
+        <div class="panel panel-default">
+          <h3>Notice</h3>
+          <% for(var i=0;i<info.length;i++){%>
+            <p><%= info[i].item%></p>
+          <%}%>
+          
+        </div>
+        
+    </div>
+  </body>
+</html>

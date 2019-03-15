@@ -1,0 +1,88 @@
+* {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .slider {
+            position: relative;
+            height: 260px;
+            width: 753px;
+            left: 100px;
+            border: 5px solid hotpink;
+            overflow: hidden;
+        }
+
+        .slider .list {
+            z-index: 1;
+            position: absolute;
+            transition: left .3s;
+            left: 0;
+        }
+        
+        .slider .list li {
+            float: left;
+        }
+
+        .slider .list li img{
+            display: block;
+            width: 753px;
+        }
+
+        .slider .btn-group {
+            position: absolute;
+            z-index: 2;
+            /*height: 50px;*/
+            top: 50%;
+            width: 100%;
+
+        }
+
+        .slider .btn-group .btn {
+            width: 40px;
+            height: 11px;
+            font-size: 40px;
+            opacity: .5;
+            text-align: center;
+            line-height: 11px;
+            position: absolute;
+            cursor: pointer;
+            user-select: none;/*不能拖动里边的文字*/
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .slider .pagination {
+            position: absolute;
+            z-index: 2;
+            bottom: 20px;
+            left: 10px;
+        }
+
+        .slider .pagination li {
+            width: 10px;
+            height: 10px;
+            background: black;
+            opacity: .4;
+            float: left;
+            margin-left: 5px;
+            line-height: 10px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+
+        .slider .pagination li.focus {
+            background: red;
+        }

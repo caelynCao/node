@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default" id="nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">welcome 员工 <%= who%></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <% if(isShow){%>
+          <li><a href="/news">news</a></li>
+        <% }%>
+        <li>
+        <a href="/bloger">你说我话建文章</a>
+        </li>
+        <li><a href="/logout">see you</a></li>
+      </ul>
+    </div>
+</nav>

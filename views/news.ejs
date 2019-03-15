@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script type="text/javascript" src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+    <style type="text/css">
+      
+    </style>
+  </head>
+  <body>
+      <%- include("header.ejs",{
+         who:name,
+         title:"news"
+      })%>
+
+    <div class="container">
+      <form action="/news" method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail1">通知</label>
+          <input type="text" id="exampleInputNews" class="form-control" placeholder="通知" value="" name="item">
+        </div>
+        <button type="submit" class="btn btn-default">添加</button>
+      </form>
+    </div>
+  </body>
+</html>

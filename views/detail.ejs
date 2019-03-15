@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <script type="text/javascript" src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <%- include("header.ejs",{title:"detail",who:name})%>
+    <div class="container">
+        <table class="table table-bordered table-striped">
+          <caption>客户管理列表</caption>
+          <thead>
+            <tr>
+              <th>上传人</th>
+              <th>客户名称</th>
+              <th>合作项目</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%for(var i=0;i<list.length;i++){%>
+              <tr>
+                <th scope="row"><%= list[i].author%></th>
+
+                <td><a href="/detail/<%= list[i]._id%>"><%= list[i].company%></a></td>
+                <td><a href="/detail/<%= list[i]._id%>"><%= list[i].project%></a></td>
+                <td>
+                  <a href="/bloger/update?id=<%= list[i]._id%>" class="btn btn-info">update</a>
+                  <a href="/bloger/delete?id=<%= list[i]._id%>" class="btn btn-danger">delete</a>
+                </td>
+              </tr>
+          <%}%>
+          </tbody>
+      </table>
+    </div>
+  </body>
+</html>

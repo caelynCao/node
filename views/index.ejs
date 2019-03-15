@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <link rel='stylesheet' href='/main.css' />
+    <link rel='stylesheet' href='/slider.css' />
+    <script type="text/javascript" src="/bootstrap/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+    <style type="text/css">
+      .container-fluid .headerul{
+        /*background: #0f0;*/
+        /*background: #ccc;*/
+        height: 60px;
+      }
+      .container-fluid .headerul ul li{
+          width: 200px;
+          height: 60px;
+          line-height: 60px;
+          text-align:center;
+      }
+      .container-fluid .headerul ul li:nth-of-type(1){
+          width:300px; 
+          line-height: 60px;
+      }
+      #nav{
+        margin-bottom: 0;
+      }
+      .container-fluid .headerul ul li:nth-of-type(1) h3{
+        height: 60px;
+        line-height: 60px;
+      }
+      .container-fluid .headerul ul li {
+          font-size:20px;
+          color: #fff;
+       }
+     .main {
+        height: 577px;
+      }
+      .container-fluid .main {
+        width:235px;
+        background: #fff;
+        margin-right: 10px;
+      }
+      .container-fluid .main .btn.btn-default{
+        width:235px;
+        height: 70px;
+      }
+      .container-fluid .mybox .section{
+        background: #fff;
+        height: 577px;
+        width: 947px;
+      }
+      caption{
+        font-size:20px;
+      }
+      .infor .table{
+        width: 560px;
+        margin-right:10px;
+      }
+      .broadcast {
+        width: 377px;
+        margin-top: 10px;
+      }
+      .broadcast li{
+        height: 40px;
+        line-height: 40px;
+        font-size:16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow:ellipsis;
+      }
+      .broadcast li a{
+        color:#3e3e3e;
+      }
+      .broadcast li h3{
+        height: 40px;
+        line-height: 40px;
+      }
+      .broadcast li h3 a{
+        color: #777;
+      }
+      .dropdown-menu li{
+        width: 233px;
+        text-align: center;
+      }
+      .dropdown-menu li a{
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("header.ejs",{who:name})%>
+    <div id="container-fluid" class="container-fluid">
+        <div class="headerul">
+          <ul>
+            <li class="l"><h3><a href="/"><%= admin%></a></h3></li>
+            <li class="l"><a href="/">首页</a></li>
+            <li class="l"><a href="javascript:;">个人办公</a></li>
+            <li class="l"><a href="javascript:;">工作中心</a></li>
+          </ul>
+        </div>
+        <div class="mybox w">
+          <div class="main l">
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            <button type="button" class="btn btn-default">首页</button>
+            <button type="button" class="btn btn-default">个人管理</button>
+            <div class="btn-group" role="group">
+            <button id="btnGroupVerticalDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              我的流程
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
+              <li><a href="/">我的关注</a></li>
+              <li><a href="/">我的申请</a></li>
+            </ul>
+            </div>
+            <div class="btn-group" role="group">
+              <button id="btnGroupVerticalDrop2" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                我的行政
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop2">
+                <li><a href="/">我的考勤</a></li>
+                <li><a href="/">我的客户</a></li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-default">通讯录</button>
+            </div>
+          </div>
+          <div class="section l">
+             <div class="slider"></div>
+             <div class="infor l">
+               <table class="table table-bordered table-striped">
+              <caption>客户管理列表</caption>
+              <thead>
+                <tr>
+                  <th>上传人</th>
+                  <th>客户名称</th>
+                  <th>合作项目</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%for(var i=0;i<list.length;i++){%>
+                  <tr>
+                    <th scope="row"><%= list[i].author%></th>
+
+                    <td><a href="/detail/<%= list[i]._id%>"><%= list[i].company%></a></td>
+                    <td><a href="/detail/<%= list[i]._id%>"><%= list[i].project%></a></td>
+                    <td>
+                      <a href="/bloger/update?id=<%= list[i]._id%>" class="btn btn-info">update</a>
+                      <a href="/bloger/delete?id=<%= list[i]._id%>" class="btn btn-danger">delete</a>
+                    </td>
+                  </tr>
+              <%}%>
+              </tbody>
+          </table>
+          </div>
+             <ul class="broadcast l">
+              <li><h3><a href="#">Company News</a></h3></li>
+              <%for(var i=0;i<lis.length;i++){%>
+                  <li>
+                    <a href="/notice"><%= lis[i].item%></a>
+                  </li>
+              <%}%>
+             </ul>  
+          </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/jquery.slider.js"></script>
+    <script>
+       $('.slider').newSlider();
+    </script>
+  </body>
+</html>
